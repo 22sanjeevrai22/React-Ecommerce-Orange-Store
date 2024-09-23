@@ -54,11 +54,18 @@ function InputTodo({ addTodo }) {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleAddTodo();
+    }
+  };
+
   return (
     <span className="flex justify-between items-center">
       <input
         type="text"
         value={todo}
+        onKeyDown={handleKeyDown}
         onChange={handleTodo}
         placeholder="Enter your to-do activity"
         className="w-5/6 border border-2 px-4 py-1 rounded-lg my-1 bg-green-200 focus:border-red-200"
