@@ -1,13 +1,13 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./Index.css";
 import Todos from "./components/Todos";
+import Routes from "./Routes";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <>
-      <Todos />
+      <Routes />
     </>
   );
 }
