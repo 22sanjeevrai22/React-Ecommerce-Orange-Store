@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Product() {
   return (
     <div className="w-72 max-h-125 z">
-      <div className="card rounded-3xl shadow-lg mt-8 shadow-red-200 hover:shadow-red-300 hover:shadow-lg">
+      <div className="card rounded-3xl shadow-sm mt-8 shadow-red-200 hover:shadow-red-200 hover:shadow-lg">
         <div className="card-head relative h-72 bg-gradient-to-r from-orange-500 to-red-500 rounded-t-3xl">
           <img
             src={shoe}
@@ -125,7 +125,7 @@ function Product() {
                   USD<b>24,000</b>
                 </div>
               </div>
-              <Link to={prod}>
+              <Link>
                 <span className="product-price flex justify-center items-center mt-3 mx-auto bg-orange-500 my-2 h-10 text-white text-xl font-light rounded-lg shadow-lg hover:bg-orange-700 hover:cursor-pointer">
                   Add to Cart
                   <IoCart className="ml-3 text-2xl" />
