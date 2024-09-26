@@ -53,7 +53,7 @@ const Navbar = () => {
           </NavLink>
           <NavLink
             to={REGISTER_ROUTE}
-            className="hidden lg:inline-block py-2 px-6 bg-orange-500 hover:bg-orange-600 text-sm text-white font-bold rounded-xl transition duration-200"
+            className="hidden lg:inline-block py-2 px-6 bg-orange-400 hover:bg-orange-600 text-sm text-white font-bold rounded-xl transition duration-200"
           >
             Register
           </NavLink>
