@@ -6,7 +6,8 @@ export default withMT({
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Poppins", "sans-serif"], // Set Poppins as the default sans font
+        sans: ['"Poppins"', "sans-serif"], // Set Poppins as the default sans font
+        cursive: ['"Dancing Script"', "cursive"],
       },
     },
   },

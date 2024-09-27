@@ -2,8 +2,11 @@ import React from "react";
 import shoe from "../../assets/img/shoe.png";
 import { IoCart, IoStar } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { PRODUCTS_ROUTE } from "../../constants/routes";
 
-function Product() {
+const Product = (props) => {
+  const { id, title, description, category, price, image } = props;
+  console.log("idddd", id);
   return (
     <div className="w-72 max-h-125 z">
       <div className="card rounded-3xl shadow-sm mt-8 shadow-red-200 hover:shadow-red-200 hover:shadow-lg">
@@ -15,11 +18,10 @@ function Product() {
           />
           <div className="product-detail text-white text-xs py-8 px-5">
             <h2 className="text-lg font-large tracking-wider py-4 uppercase">
-              Hartbeespoort
+              {title}
             </h2>
             <p className="w-[45%] text-justify">
-              Support and Nike Zoom Air come together for a more supportive feel
-              with high-speed responsiveness
+              {/* {description.substring(0, 120)} */}
             </p>
           </div>
           {/* <span className="back-text text-[125px] font-black ml-[-7px] opacity-10">
@@ -30,10 +32,10 @@ function Product() {
         <div className="card-body bg-white rounded-b-3xl">
           <div className="product-desc px-5 pt-4">
             <span className="product-title block text-lg font-medium tracking-wider uppercase">
-              <b>heartbeespoort</b>
+              <b>{category}</b>
             </span>
             <span className="product-caption block text-xs font-medium uppercase">
-              Basket Ball Collection
+              {title}
             </span>
             <span className="product-rating text-sm text-yellow-500 flex py-1">
               <IoStar />
@@ -119,13 +121,13 @@ function Product() {
             <div className="product-desc">
               <div className="price text-white text-xl font-light flex h-10 my-2">
                 <div className="product-price w-1/2 text-center content-center align bg-green-500 rounded-l-lg shadow-lg">
-                  USD<b>23,453</b>
+                  USD<b>{Math.floor(price * 0.8)}</b>
                 </div>
                 <div className="product-price w-1/2 text-center content-center text-lg bg-teal-500 rounded-r-lg shadow-lg line-through">
-                  USD<b>24,000</b>
+                  USD<b>{price}</b>
                 </div>
               </div>
-              <Link>
+              <Link to={id}>
                 <span className="product-price flex justify-center items-center mt-3 mx-auto bg-orange-500 my-2 h-10 text-white text-xl font-light rounded-lg shadow-lg hover:bg-orange-700 hover:cursor-pointer">
                   Add to Cart
                   <IoCart className="ml-3 text-2xl" />
@@ -137,6 +139,6 @@ function Product() {
       </div>
     </div>
   );
-}
+};
 
 export default Product;
