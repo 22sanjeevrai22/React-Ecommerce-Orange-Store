@@ -3,6 +3,7 @@ import Product from "../../components/products/Product";
 import ProductCarousel from "./Carousel";
 import "../../assets/css/style.css";
 import { getProducts } from "../../api/products";
+import Spinner from "../../components/svgs/Spinner";
 
 const ProductList = () => {
   const [loading, setLoading] = useState(false);
@@ -26,7 +27,7 @@ const ProductList = () => {
   return (
     <>
       {loading ? (
-        <div className="mx-auto">Loading...</div>
+        <Spinner className="mx-auto" />
       ) : (
         <div>
           <ProductCarousel />

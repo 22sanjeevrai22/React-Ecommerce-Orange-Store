@@ -1,15 +1,19 @@
-import { useState } from "react";
 import "./Index.css";
-import Todos from "./components/Todos";
+import { PersistGate } from "redux-persist/integration/react";
 import Routes from "./Routes";
-import { store } from "./redux/store";
+import { persistor, store } from "./redux/store";
 import { Provider } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <>
       <Provider store={store}>
-        <Routes />
+        <PersistGate loading={null} persistor={persistor}>
+          <Routes />
+          <ToastContainer />
+        </PersistGate>
       </Provider>
     </>
   );

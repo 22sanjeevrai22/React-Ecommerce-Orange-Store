@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaEnvelope, FaEye, FaEyeSlash, FaLock } from "react-icons/fa";
 import { RiAccountCircleFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { REGISTER_ROUTE } from "../../constants/routes";
 import { useForm } from "react-hook-form";
 import { EMAIL_REGEX } from "../../constants/regex";
-import { login } from "../../api/auth";
-import { useDispatch } from "react-redux";
-import { setUser } from "../../redux/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/auth/authAction";
+import { Spinner } from "@material-tailwind/react";
+import { toast } from "react-toastify";
 
 function LoginForm() {
   // const { name, ref, onChange, onBlur } = register("email");
@@ -16,6 +16,7 @@ function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
+  const { loading, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const handleShowPassword = () => {
@@ -25,6 +26,14 @@ function LoginForm() {
   function submitForm(data) {
     dispatch(loginUser(data));
   }
+
+  useEffect(() => {
+    toast(error, {
+      autoClose: 2000,
+      className: "red-background",
+      hideProgressBar: true,
+    });
+  }, [error]);
 
   return (
     <>
@@ -91,7 +100,7 @@ function LoginForm() {
             type="submit"
             className="inline-block mt-5 py-3 px-10 bg-gradient-to-r from-orange-400 to-orange-600 text-sm text-white font-bold rounded-xl hover:cursor-pointer hover:shadow-xl"
           >
-            Login
+            Login {loading ? <Spinner /> : null}
           </button>
           <h3 className="text-gray-500 mt-3">
             New User ?

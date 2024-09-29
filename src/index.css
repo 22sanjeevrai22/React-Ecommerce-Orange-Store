@@ -6,3 +6,12 @@
 body {
   @apply font-sans;
 }
+.red-background {
+  background-color: rgb(252, 89, 89) !important;
+  color: white !important; /* Ensures text is visible against the red background */
+}
+
+.my-container {
+  margin: 0 auto !important;
+  max-width: 1200px !important;
+}

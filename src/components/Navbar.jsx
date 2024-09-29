@@ -6,18 +6,27 @@ import { LOGIN_ROUTE, REGISTER_ROUTE } from "../constants/routes";
 import Colon from "./svgs/colon";
 import orangeStore from "../assets/img/orangeStore.png";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useDispatch, useSelector } from "react-redux";
+import { logOutUser } from "../redux/auth/authSlice";
 
 const Navbar = () => {
   const [isSidebarHidden, setIsSidebarHidden] = useState(true);
+  const { user } = useSelector((state) => state.auth);
   const navLinkClass = ({ isActive }) =>
     isActive
       ? "text-orange-600 font-bold"
       : "text-gray-500 hover:text-gray-700";
 
+  const dispatch = useDispatch();
+
+  function logout() {
+    dispatch(logOutUser());
+  }
+
   return (
     <>
       <div className="bg-slate-50 shadow-md">
-        <nav className="max-w-[1200px] m-auto relative p-3 flex justify-between items-center">
+        <nav className="my-container relative p-3 flex justify-between items-center">
           <a className="text-3xl font-bold leading-none" href="#">
             <img src={orangeStore} className="h-16 w-auto" alt="orangeStore" />
           </a>
@@ -45,18 +54,29 @@ const Navbar = () => {
               </React.Fragment>
             ))}
           </ul>
-          <NavLink
-            to={LOGIN_ROUTE}
-            className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200"
-          >
-            Login
-          </NavLink>
-          <NavLink
-            to={REGISTER_ROUTE}
-            className="hidden lg:inline-block py-2 px-6 bg-orange-400 hover:bg-orange-600 text-sm text-white font-bold rounded-xl transition duration-200"
-          >
-            Register
-          </NavLink>
+          {user ? (
+            <button
+              onClick={logout}
+              className="hidden lg:inline-block py-2 px-6 bg-orange-400 hover:bg-orange-600 text-sm text-white font-bold rounded-xl transition duration-200"
+            >
+              Logout
+            </button>
+          ) : (
+            <>
+              <NavLink
+                to={LOGIN_ROUTE}
+                className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-xl transition duration-200"
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to={REGISTER_ROUTE}
+                className="hidden lg:inline-block py-2 px-6 bg-orange-400 hover:bg-orange-600 text-sm text-white font-bold rounded-xl transition duration-200"
+              >
+                Register
+              </NavLink>
+            </>
+          )}
         </nav>
         <Sidebar
           navMenu={navMenu}
