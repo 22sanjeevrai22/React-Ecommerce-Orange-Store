@@ -31,18 +31,18 @@ const Navbar = () => {
           </div>
           <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
             {navMenu.map((menu, index) => (
-              <>
-                <li key={menu.route}>
+              <React.Fragment key={menu.route}>
+                <li>
                   <NavLink to={menu.route} className={navLinkClass}>
                     {menu.label}
                   </NavLink>
                 </li>
                 {index !== navMenu.length - 1 && (
-                  <li key={index} className="text-gray-300 ml-4">
+                  <li className="text-gray-300 ml-4" key={menu.route}>
                     <Colon />
                   </li>
                 )}
-              </>
+              </React.Fragment>
             ))}
           </ul>
           <NavLink

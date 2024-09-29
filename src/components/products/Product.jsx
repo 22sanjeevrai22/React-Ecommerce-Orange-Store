@@ -2,23 +2,22 @@ import React from "react";
 import shoe from "../../assets/img/shoe.png";
 import { IoCart, IoStar } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import { PRODUCTS_ROUTE } from "../../constants/routes";
 
 const Product = (props) => {
-  const { id, title, description, category, price, image } = props;
+  const { id, name, brand, category, price, image } = props;
   console.log("idddd", id);
   return (
     <div className="w-72 max-h-125 z">
       <div className="card rounded-3xl shadow-sm mt-8 shadow-red-200 hover:shadow-red-200 hover:shadow-lg">
         <div className="card-head relative h-72 bg-gradient-to-r from-orange-500 to-red-500 rounded-t-3xl">
           <img
-            src={shoe}
+            src={image ? image : shoe}
             alt="Shoe"
             className="absolute left-0 w-64 mt-20 ml-16"
           />
-          <div className="product-detail text-white text-xs py-8 px-5">
-            <h2 className="text-lg font-large tracking-wider py-4 uppercase">
-              {title}
+          <div className="product-detail text-white text-xs py-2 ml-4">
+            <h2 className="text-md font-large tracking-wider py-4 uppercase">
+              {category}
             </h2>
             <p className="w-[45%] text-justify">
               {/* {description.substring(0, 120)} */}
@@ -32,10 +31,10 @@ const Product = (props) => {
         <div className="card-body bg-white rounded-b-3xl">
           <div className="product-desc px-5 pt-4">
             <span className="product-title block text-lg font-medium tracking-wider uppercase">
-              <b>{category}</b>
+              <b>{name}</b>
             </span>
             <span className="product-caption block text-xs font-medium uppercase">
-              {title}
+              {brand}
             </span>
             <span className="product-rating text-sm text-yellow-500 flex py-1">
               <IoStar />
@@ -123,7 +122,7 @@ const Product = (props) => {
                 <div className="product-price w-1/2 text-center content-center align bg-green-500 rounded-l-lg shadow-lg">
                   USD<b>{Math.floor(price * 0.8)}</b>
                 </div>
-                <div className="product-price w-1/2 text-center content-center text-lg bg-teal-500 rounded-r-lg shadow-lg line-through">
+                <div className="product-price w-1/2 text-center content-center text-xl bg-teal-500 rounded-r-lg shadow-lg line-through">
                   USD<b>{price}</b>
                 </div>
               </div>

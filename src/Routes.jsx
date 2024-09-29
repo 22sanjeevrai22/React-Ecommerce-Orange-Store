@@ -21,6 +21,7 @@ import AboutUs from "./pages/AboutUs";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import ProductDetails from "./pages/products/Details";
+import UnAuthLayout from "./layouts/UnAuthLayout";
 
 function Routes() {
   const router = createBrowserRouter(
@@ -30,11 +31,13 @@ function Routes() {
         <Route path={HOME_ROUTE} element={<Home />} />
         <Route path={ABOUT_ROUTE} element={<AboutUs />} />
         <Route path={CONTACT_ROUTE} element={<ContactUs />} />
-        <Route path={LOGIN_ROUTE} element={<Login />} />
-        <Route path={REGISTER_ROUTE} element={<Register />} />
         <Route path={PRODUCTS_ROUTE}>
           <Route index element={<ProductList />} />
           <Route path={":id"} element={<ProductDetails />} />
+        </Route>
+        <Route element={<UnAuthLayout />}>
+          <Route path={LOGIN_ROUTE} element={<Login />} />
+          <Route path={REGISTER_ROUTE} element={<Register />} />
         </Route>
       </Route>
     )

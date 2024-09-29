@@ -6,25 +6,24 @@ import { REGISTER_ROUTE } from "../../constants/routes";
 import { useForm } from "react-hook-form";
 import { EMAIL_REGEX } from "../../constants/regex";
 import { login } from "../../api/auth";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/auth/authSlice";
+import { loginUser } from "../../redux/auth/authAction";
 
 function LoginForm() {
+  // const { name, ref, onChange, onBlur } = register("email");
+  // const { name, ref, onChange, onBlur } = register("password");
   const [showPassword, setShowPassword] = useState(false);
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
-  // const { name, ref, onChange, onBlur } = register("email");
-  // const { name, ref, onChange, onBlur } = register("password");
-  console.log("errors", errors);
+  const dispatch = useDispatch();
+
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
+
   function submitForm(data) {
-    login(data)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    dispatch(loginUser(data));
   }
 
   return (
