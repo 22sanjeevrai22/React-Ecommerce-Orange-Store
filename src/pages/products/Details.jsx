@@ -7,6 +7,7 @@ function ProductDetails() {
   const [product, setProduct] = useState([]);
 
   const params = useParams();
+  console.log("params", params);
 
   useEffect(() => {
     setLoading(true);
@@ -19,20 +20,17 @@ function ProductDetails() {
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching data:", error.response.data);
         setLoading(false);
       });
-  }, []);
-
-  console.log("this is params", params);
-  console.log("this is params id", params.id);
+  }, [params.id]);
 
   return (
     <>
-      <h1>{`The params is : ${params}`}</h1>
-      <h1>{`The id of params : ${params.id}`}</h1>
-      <h1>{`The id of product is : ${product.id}`}</h1>
-      <h1>{`The name of product is : ${product.title}`}</h1>
+      <h1>{`The id : ${product.id}`}</h1>
+      <h1>{`The name of product is : ${product.name}`}</h1>
+      <h1>{`The category : ${ProductDetails.category}`}</h1>
+      <h1>{`The brand of product is : ${product.brand}`}</h1>
     </>
   );
 }

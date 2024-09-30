@@ -22,6 +22,7 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import ProductDetails from "./pages/products/Details";
 import UnAuthLayout from "./layouts/UnAuthLayout";
+import AddProduct from "./pages/products/AddProduct";
 
 function Routes() {
   const router = createBrowserRouter(
@@ -34,6 +35,7 @@ function Routes() {
         <Route path={PRODUCTS_ROUTE}>
           <Route index element={<ProductList />} />
           <Route path={":id"} element={<ProductDetails />} />
+          <Route path="add" element={<AddProduct />} />
         </Route>
         <Route element={<UnAuthLayout />}>
           <Route path={LOGIN_ROUTE} element={<Login />} />

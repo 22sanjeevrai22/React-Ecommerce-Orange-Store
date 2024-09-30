@@ -1,9 +1,10 @@
 import Todos from "../components/Todos";
+import ProductCarousel from "../components/products/Carousel";
 
 function Home() {
   return (
     <>
-      <div>This is Home</div>
+      <ProductCarousel />
       <Todos />
     </>
   );

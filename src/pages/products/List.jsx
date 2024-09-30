@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Product from "../../components/products/Product";
-import ProductCarousel from "./Carousel";
-import "../../assets/css/style.css";
 import { getProducts } from "../../api/products";
 import Spinner from "../../components/svgs/Spinner";
 
@@ -30,8 +28,7 @@ const ProductList = () => {
         <Spinner className="mx-auto" />
       ) : (
         <div>
-          <ProductCarousel />
-          <div className="rounded-xl bg-gray-100 max-w-[1200px] mx-auto px-4 py-2 shadow-lg z-1">
+          <div className="my-container rounded-xl bg-gray-10 max-w-[1200px] mx-auto px-4 py-2 shadow-lg z-1">
             <div className="grid gap-y-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center my-16">
               {productList.map((product) => (
                 <Product id={product._id} key={product._id} {...product} />
