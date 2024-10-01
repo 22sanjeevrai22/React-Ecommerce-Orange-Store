@@ -6,7 +6,7 @@ function Login() {
       <div className="max-w-[1200px] mx-auto bg-gray-200">
         <div className="flex flex-col lg:flex-row justify-between">
           <div
-            className="lg:w-[60%] h-[85vh] bg-gradient-to-r from-orange-400 to-orange-600 text-white text-center p-6 content-center"
+            className="lg:w-[60%] h-[90vh] bg-gradient-to-r from-orange-400 to-orange-600 text-white text-center p-6 content-center"
             style={{ clipPath: "circle(100% at 0 50%)" }}
           >
             <div className="text-left w-4/5">

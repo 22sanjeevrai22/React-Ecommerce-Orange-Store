@@ -1,4 +1,3 @@
-import React from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -22,7 +21,8 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import ProductDetails from "./pages/products/Details";
 import UnAuthLayout from "./layouts/UnAuthLayout";
-import AddProduct from "./pages/products/AddProduct";
+import AddProduct from "./pages/products/Add";
+import EditProduct from "./pages/products/Edit";
 
 function Routes() {
   const router = createBrowserRouter(
@@ -35,7 +35,8 @@ function Routes() {
         <Route path={PRODUCTS_ROUTE}>
           <Route index element={<ProductList />} />
           <Route path={":id"} element={<ProductDetails />} />
-          <Route path="add" element={<AddProduct />} />
+          <Route path={"add"} element={<AddProduct />} />
+          <Route path={"edit/:id"} element={<EditProduct />} />
         </Route>
         <Route element={<UnAuthLayout />}>
           <Route path={LOGIN_ROUTE} element={<Login />} />

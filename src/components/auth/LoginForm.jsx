@@ -100,7 +100,7 @@ function LoginForm() {
             type="submit"
             className="inline-block mt-5 py-3 px-10 bg-gradient-to-r from-orange-400 to-orange-600 text-sm text-white font-bold rounded-xl hover:cursor-pointer hover:shadow-xl"
           >
-            Login {loading ? <Spinner /> : null}
+            Login {loading ? <Spinner className="inline-block ml-2" /> : null}
           </button>
           <h3 className="text-gray-500 mt-3">
             New User ?

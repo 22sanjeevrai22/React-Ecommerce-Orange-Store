@@ -8,12 +8,12 @@ body {
 }
 
 .green-background {
-  background-color: rgb(89, 252, 143) !important;
+  background-color: rgb(3, 218, 75) !important;
   color: white !important; /* Ensures text is visible against the red background */
 }
 
 .red-background {
-  background-color: rgb(252, 89, 89) !important;
+  background-color: rgb(230, 0, 0) !important;
   color: white !important; /* Ensures text is visible against the red background */
 }
 

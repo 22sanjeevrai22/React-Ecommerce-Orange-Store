@@ -2,13 +2,23 @@ import React from "react";
 import shoe from "../../assets/img/shoe.png";
 import { IoCart, IoStar } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { FaEdit } from "react-icons/fa";
+import { MdDeleteForever } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { deleteProduct } from "../../api/products";
 
-const Product = (props) => {
+const ProductCard = (props) => {
   const { id, name, brand, category, price, image } = props;
-  console.log("idddd", id);
+  const { user } = useSelector((state) => state.auth);
+
+  function deleteProductById() {
+    deleteProduct(id);
+  }
+
+  console.log("The id of Product Card:", id);
   return (
     <div className="w-72 max-h-125 z">
-      <div className="card rounded-3xl shadow-sm mt-8 shadow-red-200 hover:shadow-red-200 hover:shadow-lg">
+      <div className="card rounded-3xl shadow-sm mt-8 shadow-red-200 hover:shadow-red-200 hover:shadow-lg hover:scale-[101%] hover:transition-all">
         <div className="card-head relative h-72 bg-gradient-to-r from-orange-500 to-red-500 rounded-t-3xl">
           <img
             src={image ? image : shoe}
@@ -16,9 +26,21 @@ const Product = (props) => {
             className="absolute left-0 w-64 mt-20 ml-16"
           />
           <div className="product-detail text-white text-xs py-2 ml-4">
-            <h2 className="text-md font-large tracking-wider py-4 uppercase">
-              {category}
-            </h2>
+            <div className="flex justify-around">
+              <h2 className="text-lg tracking-wider py-2 uppercase w-3/5">
+                {category}
+              </h2>
+              {user && user.roles && user.roles.includes("ADMIN") ? (
+                <div className="w-2/5 flex justify-center items-center gap-2">
+                  <Link to={`edit/${id}`} title="Edit">
+                    <FaEdit className="w-5 h-5 hover:cursor-pointer hover:scale-110" />
+                  </Link>
+                  <Link title="Delete" onClick={deleteProductById}>
+                    <MdDeleteForever className="w-6 h-6 hover:cursor-pointer hover:scale-110" />
+                  </Link>
+                </div>
+              ) : null}
+            </div>
             <p className="w-[45%] text-justify">
               {/* {description.substring(0, 120)} */}
             </p>
@@ -127,7 +149,7 @@ const Product = (props) => {
                 </div>
               </div>
               <Link to={id}>
-                <span className="product-price flex justify-center items-center mt-3 mx-auto bg-orange-500 my-2 h-10 text-white text-xl font-light rounded-lg shadow-lg hover:bg-orange-700 hover:cursor-pointer">
+                <span className="product-price flex justify-center items-center mt-3 mx-auto bg-orange-500 my-2 h-10 text-white text-xl font-light rounded-lg shadow-lg hover:bg-orange-700 cursor-pointer">
                   Add to Cart
                   <IoCart className="ml-3 text-2xl" />
                 </span>
@@ -140,4 +162,4 @@ const Product = (props) => {
   );
 };
 
-export default Product;
+export default ProductCard;
