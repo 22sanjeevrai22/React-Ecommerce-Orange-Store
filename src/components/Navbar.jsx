@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="bg-slate-50 shadow-md">
+      <div className="bg-slate-50 shadow-md z-10">
         <nav className="my-container relative p-3 flex justify-between items-center">
           <a className="text-3xl font-bold leading-none" href="#">
             <img src={orangeStore} className="h-16 w-auto" alt="orangeStore" />

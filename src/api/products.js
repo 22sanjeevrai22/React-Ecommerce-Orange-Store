@@ -1,6 +1,6 @@
 import axios from "axios";
 import config from "../config/config";
-const authToken = localStorage.getItem("authToken");
+const authToken = localStorage.getItem("auth");
 
 const getProducts = async () => {
   const response = await axios.get(`${config.baseApiUrl}/api/products`);
