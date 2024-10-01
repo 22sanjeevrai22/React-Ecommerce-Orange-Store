@@ -7,7 +7,7 @@ function ProductDetails() {
   const [product, setProduct] = useState([]);
 
   const params = useParams();
-  console.log("params", params);
+  console.log("paramss", params);
 
   useEffect(() => {
     setLoading(true);
