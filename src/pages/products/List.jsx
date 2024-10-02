@@ -1,28 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { getProducts } from "../../api/products";
-import Spinner from "../../components/svgs/Spinner";
+import Spinner from "../../components/Spinner";
 import { GoPlus } from "react-icons/go";
 import { Link } from "react-router-dom";
 import ProductCard from "../../components/products/Card";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductsThunk } from "../../redux/products/productActions";
 
 const ProductList = () => {
-  const [loading, setLoading] = useState(false);
-  const [productList, setProductList] = useState([]);
+  const state = useSelector((state) => state.products);
+  const { products, loading, error } = state;
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setLoading(true);
-    getProducts()
-      .then((response) => {
-        setProductList(response.data);
-        setLoading(false);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      });
-  }, []);
-  console.log("this is productList", productList);
+    dispatch(getProductsThunk());
+  }, [dispatch]);
+
+  console.log("this is productList");
 
   return (
     <>
@@ -38,7 +31,7 @@ const ProductList = () => {
               Add Product <GoPlus className="inline-block" />
             </Link>
             <div className="grid gap-y-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center my-16">
-              {productList.map((product) => (
+              {products.map((product) => (
                 <ProductCard id={product._id} key={product._id} {...product} />
               ))}
             </div>

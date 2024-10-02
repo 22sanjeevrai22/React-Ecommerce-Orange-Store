@@ -1,18 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import shoe from "../../assets/img/shoe.png";
 import { IoCart, IoStar } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteProduct } from "../../api/products";
+import Modal from "../Modal";
+import { toast } from "react-toastify";
+import { getProductsThunk } from "../../redux/products/productActions";
 
 const ProductCard = (props) => {
   const { id, name, brand, category, price, image } = props;
   const { user } = useSelector((state) => state.auth);
+  const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
 
-  function deleteProductById() {
-    deleteProduct(id);
+  function removeProduct() {
+    setIsOpen(true);
+  }
+
+  async function confirmDelete() {
+    try {
+      await deleteProduct(id);
+      dispatch(getProductsThunk());
+      toast(`${name} deleted successfully.`, {
+        autoClose: 2000,
+        className: "green-background",
+        hideProgressBar: true,
+      });
+    } catch (error) {
+      toast(error.response.data, {
+        autoClose: 2000,
+        className: "red-background",
+        hideProgressBar: true,
+      });
+    } finally {
+      setIsOpen(false);
+    }
   }
 
   console.log("The id of Product Card:", id);
@@ -35,7 +60,7 @@ const ProductCard = (props) => {
                   <Link to={`edit/${id}`} title="Edit">
                     <FaEdit className="w-5 h-5 hover:cursor-pointer hover:scale-110" />
                   </Link>
-                  <Link title="Delete" onClick={deleteProductById}>
+                  <Link title="Delete" onClick={removeProduct}>
                     <MdDeleteForever className="w-6 h-6 hover:cursor-pointer hover:scale-110" />
                   </Link>
                 </div>
@@ -52,10 +77,10 @@ const ProductCard = (props) => {
 
         <div className="card-body bg-white rounded-b-3xl">
           <div className="product-desc px-5 pt-4">
-            <span className="product-title block text-lg font-medium tracking-wider uppercase">
+            <span className="product-title h-8 leading-none block text-lg font-medium tracking-wider uppercase">
               <b>{name}</b>
             </span>
-            <span className="product-caption block text-xs font-medium uppercase">
+            <span className="product-caption block text-xs font-medium uppercase mt-2">
               {brand}
             </span>
             <span className="product-rating text-sm text-yellow-500 flex py-1">
@@ -158,6 +183,21 @@ const ProductCard = (props) => {
           </div>
         </div>
       </div>
+      <Modal
+        label="You are about to delete a product"
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        description={`Are you sure you want to delete ${name}? This process cannot be undone.`}
+        deleteButton={
+          <button
+            type="button"
+            onClick={confirmDelete}
+            className="px-4 py-2 rounded-lg text-white text-sm tracking-wide bg-red-500 hover:bg-red-600 active:bg-red-500"
+          >
+            Delete
+          </button>
+        }
+      />
     </div>
   );
 };

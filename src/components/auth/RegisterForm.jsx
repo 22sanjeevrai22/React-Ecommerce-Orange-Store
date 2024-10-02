@@ -6,7 +6,7 @@ import { LOGIN_ROUTE, REGISTER_ROUTE } from "../../constants/routes";
 import { useForm } from "react-hook-form";
 import { EMAIL_REGEX } from "../../constants/regex";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../../redux/auth/authAction";
+import { loginUser } from "../../redux/auth/authActions";
 import { Spinner } from "@material-tailwind/react";
 import { toast } from "react-toastify";
 
