@@ -50,9 +50,9 @@ const ProductCard = (props) => {
             alt="Shoe"
             className="absolute left-0 w-64 mt-20 ml-16"
           />
-          <div className="product-detail text-white text-xs py-2 ml-4">
+          <div className="product-detail text-white text-xs py-2 ml-5">
             <div className="flex justify-around">
-              <h2 className="text-lg tracking-wider py-2 uppercase w-3/5">
+              <h2 className="font-semibold text-lg tracking-wider py-2 uppercase w-3/5">
                 {category}
               </h2>
               {user && user.roles && user.roles.includes("ADMIN") ? (

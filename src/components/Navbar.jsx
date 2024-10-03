@@ -19,7 +19,7 @@ const Navbar = () => {
 
   const dispatch = useDispatch();
 
-  function logout() {
+  function logOut() {
     dispatch(logOutUser());
   }
 
@@ -56,7 +56,7 @@ const Navbar = () => {
           </ul>
           {user ? (
             <button
-              onClick={logout}
+              onClick={logOut}
               className="hidden lg:inline-block py-2 px-6 bg-orange-400 hover:bg-orange-600 text-sm text-white font-bold rounded-xl transition duration-200"
             >
               Logout
@@ -82,6 +82,7 @@ const Navbar = () => {
           navMenu={navMenu}
           isSidebarHidden={isSidebarHidden}
           setIsSidebarHidden={setIsSidebarHidden}
+          logOut={logOut}
         />
       </div>
     </>
