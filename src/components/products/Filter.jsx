@@ -55,6 +55,7 @@ const Filter = () => {
           <option value="saab">Saab</option>
           <option value="mercedes">Mercedes</option>
           <option value="audi">Audi</option>
+          <option value="audi">BMW</option>
         </select>
       </div>
     </div>
