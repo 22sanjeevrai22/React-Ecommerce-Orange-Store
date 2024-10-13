@@ -2,8 +2,9 @@ import React, { useState } from "react";
 
 const Filter = () => {
   return (
-    <div className="my-container bg-white rounded-3xl grid grid-cols-5">
-      <div className="bg-white flex px-0.5 rounded-full border border-blue-500 overflow-hidden max-w-56">
+    <div className="my-container bg-white rounded-3xl grid grid-cols-5 px-3 py-1.5">
+      {/* Search Field  */}
+      <div className="bg-gray-50 flex px-0.5 rounded-3xl border border-blue-500 overflow-hidden max-w-56">
         <input
           type="email"
           placeholder="Search"
@@ -16,46 +17,44 @@ const Filter = () => {
           Search
         </button>
       </div>
+      {/* Dropdown menu for Category */}
+      <div className="text-sm text-gray-400 flex justify-center items-center pl-3 rounded-lg max-w-56">
+        <label htmlFor="category">Category:</label>
+        <select
+          className="w-full rounded-md text-sm bg-gray-50 px-3 py-1 mx-3 my-1 border border-gray-300"
+          name="category"
+          id="category"
+        >
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
+      </div>
 
-      {/* Dropdown menu */}
-      <div className="text-sm text-gray-400 flex justify-center items-center pl-3 rounded-lg overflow-hidden max-w-56">
-        <label htmlFor="category">Category:</label>
+      {/* Dropdown menu for Sorting  */}
+      <div className="text-sm text-gray-400 flex justify-center items-center pl-3 rounded-lg max-w-56">
+        <label htmlFor="sort">Sort:</label>
         <select
-          className="w-full rounded-md text-sm bg-white px-3 py-1 mx-3 my-1 border-gray-400"
-          name="category"
-          id="category"
+          className="w-full rounded-md text-sm bg-gray-50 px-3 py-1 mx-3 my-1 border border-gray-300"
+          name="sort"
+          id="sort"
         >
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
+          <option value="">Latest</option>
+          <option value="">Low to High</option>
+          <option value="">High to Low</option>
         </select>
       </div>
-      <div className="text-sm text-gray-400 flex justify-center items-center pl-3 rounded-lg overflow-hidden max-w-56">
-        <label htmlFor="category">Category:</label>
+      <div className="text-sm text-gray-400 flex justify-center items-center pl-3 rounded-lg max-w-56">
+        <label htmlFor="limit">Limit:</label>
         <select
-          className="w-full rounded-md text-sm bg-white px-3 py-1 mx-3 my-1 border-gray-400"
-          name="category"
-          id="category"
+          className="w-full rounded-md text-sm bg-gray-50 px-3 py-1 mx-3 my-1 border border-gray-300"
+          name="limit"
+          id="limit"
         >
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-        </select>
-      </div>
-      <div className="text-sm text-gray-400 flex justify-center items-center pl-3 rounded-lg overflow-hidden max-w-56">
-        <label htmlFor="category">Brand:</label>
-        <select
-          className="w-full rounded-md text-sm bg-white px-3 py-1 mx-3 my-1 border-gray-400"
-          name="category"
-          id="category"
-        >
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-          <option value="audi">BMW</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
         </select>
       </div>
     </div>
