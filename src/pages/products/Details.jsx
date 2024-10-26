@@ -25,12 +25,16 @@ function ProductDetails() {
       });
   }, [params.id]);
 
+  console.log("this is product", product);
+
   return (
     <>
-      <h1>{`The id : ${product.id}`}</h1>
-      <h1>{`The name of product is : ${product.name}`}</h1>
-      <h1>{`The category : ${ProductDetails.category}`}</h1>
-      <h1>{`The brand of product is : ${product.brand}`}</h1>
+      <div className="my-container flex items-center justify-between">
+        <div className="h-20 flex-1">
+          <img className="" src={product.url} alt="product_url" />
+        </div>
+        <div className="h-20 flex-1">hehe</div>
+      </div>
     </>
   );
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const Filter = () => {
   return (
-    <div className="my-container bg-white rounded-3xl grid grid-cols-5 px-3 py-1.5">
+    <div className="my-container bg-white rounded-3xl grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 px-3 py-1.5">
       {/* Search Field  */}
       <div className="bg-gray-50 flex px-0.5 rounded-3xl border border-blue-500 overflow-hidden max-w-56">
         <input

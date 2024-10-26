@@ -32,7 +32,7 @@ const ProductList = () => {
               </div>
               <Link
                 to="add"
-                className="inline-block py-3 px-10 bg-gradient-to-r from-green-400 to-green-700 text-sm text-white rounded-xl hover:cursor-pointer hover:shadow-xl"
+                className="py-3 px-10 bg-gradient-to-r from-green-400 to-green-700 text-sm text-white rounded-xl hover:cursor-pointer hover:shadow-xl"
               >
                 Add Product <GoPlus className="inline-block" />
               </Link>
