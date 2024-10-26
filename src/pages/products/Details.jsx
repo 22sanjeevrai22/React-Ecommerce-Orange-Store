@@ -29,11 +29,18 @@ function ProductDetails() {
 
   return (
     <>
-      <div className="my-container flex items-center justify-between">
-        <div className="h-20 flex-1">
-          <img className="" src={product.url} alt="product_url" />
+      <div className="my-container flex items-center gap-5 justify-between">
+        <div className="h-[80vh] flex-1 p-4 rounded-md">
+          <img
+            className="h-[80%] object-cover mx-auto"
+            src={product.url}
+            alt="product_url"
+          />
+          <div className="preview grid grid-cols-4">
+            <img className="w-10 h-10 rounded-sm"></img>
+          </div>
         </div>
-        <div className="h-20 flex-1">hehe</div>
+        <div className="h-[80vh] flex-1">hehe</div>
       </div>
     </>
   );
