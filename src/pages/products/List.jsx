@@ -16,7 +16,7 @@ const ProductList = () => {
     dispatch(getProductsThunk());
   }, [dispatch]);
 
-  console.log("this is productList");
+  console.log("this is productList.");
 
   return (
     <>
