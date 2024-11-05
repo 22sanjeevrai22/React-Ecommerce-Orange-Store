@@ -43,6 +43,7 @@ function ProductDetails() {
     "https://images.pexels.com/photos/3373724/pexels-photo-3373724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/1464625/pexels-photo-1464625.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/1334597/pexels-photo-1334597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.pexels.com/photos/40739/mobile-phone-smartphone-tablet-white-40739.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   ];
 
   function handlePreviewImage(image) {
@@ -96,7 +97,9 @@ function ProductDetails() {
                   key={index}
                   src={image}
                   className={`w-16 border-lg h-16 rounded-md object-cover cursor-pointer ${
-                    image === previewImage ? "border-2 border-orange-300" : ""
+                    image === previewImage
+                      ? "border-2 border-orange-300 opacity-70"
+                      : ""
                   }`}
                   onClick={() => handlePreviewImage(image)}
                 ></img>
@@ -104,7 +107,12 @@ function ProductDetails() {
             </div>
           </div>
         </div>
-        <div className="h-[80vh] w-[55%] p-4 bg-gray-100">hehe</div>
+        <div className="h-[80vh] w-[55%] p-4 bg-gray-100 rounded-2xl flex justify-center items-center">
+          {" "}
+          <div className="">
+            <></>
+          </div>
+        </div>
       </div>
     </>
   );
