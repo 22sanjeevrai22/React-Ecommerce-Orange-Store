@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getProductById } from "../../api/products";
 import Spinner from "../../components/Spinner";
+import { IoCart } from "react-icons/io5";
 
 function ProductDetails() {
   const [loading, setLoading] = useState(false);
   const [product, setProduct] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
   const previewImageContainerRef = useRef(null);
+  const [count, setCount] = useState(1);
   const params = useParams();
   console.log("paramss", params);
 
@@ -64,10 +66,18 @@ function ProductDetails() {
       behavior: "smooth",
     });
   }
+
+  function handleDecrease() {
+    setCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 1));
+  }
+
+  function handleIncrease() {
+    setCount((prevCount) => (prevCount < 10 ? prevCount + 1 : 10));
+  }
   return (
     <>
-      <div className="my-container flex items-center gap-16 justify-between">
-        <div className="h-[84vh] w-[42%] p-4">
+      <div className="my-container flex flex-col lg:flex-row items-center gap-16 justify-between">
+        <div className="h-[84vh] w-[80%] lg:w-[42%] p-4 ">
           <img
             className="h-[80%] object-cover mx-auto rounded-2xl"
             src={previewImage}
@@ -107,10 +117,48 @@ function ProductDetails() {
             </div>
           </div>
         </div>
-        <div className="h-[80vh] w-[55%] p-4 bg-gray-100 rounded-2xl flex justify-center items-center">
-          {" "}
-          <div className="">
-            <></>
+        <div className="h-[80vh] w-[80%] lg:w-[55%] p-12 rounded-2xl content-center">
+          <h2 className="text-gray-700 my-4">{product.brand}</h2>
+          <h1 className="text-5xl font-bold my-4">{product.name}</h1>
+          <h4 className="text-gray-700 my-4">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum
+            dignissimos alias dicta, voluptatem quis eaque voluptatum impedit
+            quod nulla doloribus labore quibusdam vel sapiente consequuntur.
+          </h4>
+          <div className="text-2xl font-semibold mt-4">
+            ${product.price * 0.9}
+            <span className="bg-black font-normal content-center text-lg ml-6 text-white px-2 rounded-md align-middle">
+              -10%
+            </span>
+          </div>
+          <h4 className="line-through mb-2 text-gray-700 font-lg">
+            ${product.price}
+          </h4>
+          <div className="my-4 inline-flex bg-gray-300 rounded-md font-medium">
+            <span
+              onClick={handleDecrease}
+              className={`text-orange-800 px-4 py-1 rounded-l-md cursor-pointer transition-all hover:scale-150 ${
+                count === 1 ? "cursor-not-allowed opacity-50" : ""
+              }`}
+              disabled={count === 1}
+            >
+              -
+            </span>
+            <span className="w-8 text-center py-1 font-medium">{count}</span>
+            <span
+              onClick={handleIncrease}
+              className={`text-orange-800 px-4 py-1 rounded-r-md cursor-pointer transition-all hover:scale-150 ${
+                count === 10 ? "cursor-not-allowed opacity-50" : ""
+              }`}
+            >
+              +
+            </span>
+          </div>
+          <div className="w-56">
+            <span className="product-price flex justify-center items-center mt-2 mx-auto bg-orange-500 h-10 text-white text-xl font-light rounded-lg shadow-lg hover:bg-orange-700 cursor-pointer">
+              Add to Cart
+              <IoCart className="ml-3 text-2xl" />
+            </span>
           </div>
         </div>
       </div>
