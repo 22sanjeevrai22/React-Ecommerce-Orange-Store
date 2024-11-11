@@ -1,6 +1,12 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 const Filter = () => {
+  const dispatch = useDispatch();
+
+  function setProductValue(limit) {
+    console.log("ProductValue", limit);
+  }
   return (
     <div className="my-container bg-white rounded-3xl grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 px-3 py-1.5">
       {/* Search Field  */}
@@ -51,6 +57,7 @@ const Filter = () => {
           className="w-full rounded-md text-sm bg-gray-50 px-3 py-1 mx-3 my-1 border border-gray-300"
           name="limit"
           id="limit"
+          onChange={(e) => setProductValue(e.target.value)}
         >
           <option value="10">10</option>
           <option value="20">20</option>
