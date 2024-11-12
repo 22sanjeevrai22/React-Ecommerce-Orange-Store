@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { setLimit } from "../../redux/products/productSlice";
 
 const Filter = () => {
   const dispatch = useDispatch();
 
   function setProductValue(limit) {
-    console.log("ProductValue", limit);
+    console.log("limitt", limit);
+    dispatch(setLimit(parseInt(limit)));
   }
   return (
     <div className="my-container bg-white rounded-3xl grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 px-3 py-1.5">

@@ -3,12 +3,12 @@ import config from "../config/config";
 const authToken = localStorage.getItem("authToken");
 
 const getProducts = async ({ limit = 10 }) => {
-  const query = `limit = ${limit}`;
+  const query = `limit=${limit}`;
   const response = await axios.get(
     `${config.baseApiUrl}/api/products?${query}`
   );
-  return response;
   console.log("Api", response);
+  return response;
 };
 
 const getProductById = async (id) => {
