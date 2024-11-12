@@ -6,7 +6,6 @@ const Filter = () => {
   const dispatch = useDispatch();
 
   function setProductValue(limit) {
-    console.log("limitt", limit);
     dispatch(setLimit(parseInt(limit)));
   }
   return (

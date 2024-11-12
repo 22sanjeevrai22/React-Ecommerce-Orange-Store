@@ -5,11 +5,9 @@ const productSlice = createSlice({
   name: "products",
   initialState: {
     loading: false,
-    error: null,
     products: [],
-    query: {
-      limit: 10,
-    },
+    error: null,
+    query: {},
   },
   reducers: {
     setLimit: (state, action) => {

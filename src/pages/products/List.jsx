@@ -9,12 +9,12 @@ import Filter from "../../components/products/Filter";
 
 const ProductList = () => {
   const state = useSelector((state) => state.products);
-  const { products, loading, error } = state;
+  const { products, loading, error, query } = state;
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProductsThunk());
-  }, [dispatch]);
+  }, [dispatch, query]);
 
   console.log("this is productList.");
 
