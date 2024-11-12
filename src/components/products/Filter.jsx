@@ -6,7 +6,9 @@ const Filter = () => {
   const dispatch = useDispatch();
 
   function setProductValue(limit) {
-    dispatch(setLimit(parseInt(limit)));
+    console.log("Limit", limit);
+    const parsedLimit = parseInt(limit);
+    dispatch(setLimit(parsedLimit));
   }
   return (
     <div className="my-container bg-white rounded-3xl grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 px-3 py-1.5">

@@ -8,12 +8,13 @@ import { getProductsThunk } from "../../redux/products/productActions";
 import Filter from "../../components/products/Filter";
 
 const ProductList = () => {
-  const state = useSelector((state) => state.products);
-  const { products, loading, error, query } = state;
+  const { products, loading, error, query } = useSelector(
+    (state) => state.products
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProductsThunk());
+    dispatch(getProductsThunk(query));
   }, [dispatch, query]);
 
   console.log("this is productList.");
