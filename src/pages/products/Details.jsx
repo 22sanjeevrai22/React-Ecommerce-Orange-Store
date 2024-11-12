@@ -13,31 +13,6 @@ function ProductDetails() {
   const params = useParams();
   console.log("paramss", params);
 
-  async function getProductFromId() {
-    setLoading(true);
-    try {
-      const response = await getProductById(params.id);
-      const productData = response.data;
-      setProduct(productData);
-      setPreviewImage(productData?.url || placeholderImages[0]);
-    } catch {
-      console.error("Error fetching data:", error.response.data);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  useEffect(() => {
-    getProductFromId();
-  }, [params.id]);
-
-  console.log("this is product", product);
-  if (loading) return <Spinner />;
-  if (!product)
-    return (
-      <p className="flex items-center justify-center">Product not found.</p>
-    );
-
   const placeholderImages = [
     product?.url,
     "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -47,6 +22,34 @@ function ProductDetails() {
     "https://images.pexels.com/photos/1334597/pexels-photo-1334597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/40739/mobile-phone-smartphone-tablet-white-40739.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   ];
+
+  async function getProductFromId() {
+    setLoading(true);
+    try {
+      const response = await getProductById(params.id);
+      const productData = response.data;
+      setProduct(productData);
+      setPreviewImage(productData?.url || placeholderImages[1]);
+    } catch (error) {
+      console.log(
+        "Error fetching data:",
+        error.response?.data || error.message
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    getProductFromId();
+  }, [params.id]);
+
+  console.log("this is product details page..", product);
+  if (loading) return <Spinner />;
+  if (!product)
+    return (
+      <p className="flex items-center justify-center">Product not found.</p>
+    );
 
   function handlePreviewImage(image) {
     setPreviewImage(image);
