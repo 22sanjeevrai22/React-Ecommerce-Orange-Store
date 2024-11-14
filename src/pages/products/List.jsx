@@ -15,7 +15,7 @@ const ProductList = () => {
 
   useEffect(() => {
     dispatch(getProductsThunk(query));
-  }, [dispatch, query]);
+  }, [dispatch, query.limit]);
 
   console.log("this is productList.");
 

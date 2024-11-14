@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLimit } from "../../redux/products/productSlice";
 
 const Filter = () => {
   const dispatch = useDispatch();
+  // const limit = useSelector((state) => state.products.query.limit);
 
   function setProductValue(limit) {
     console.log("Limit", limit);
@@ -60,6 +61,7 @@ const Filter = () => {
           className="w-full rounded-md text-sm bg-gray-50 px-3 py-1 mx-3 my-1 border border-gray-300"
           name="limit"
           id="limit"
+          // value={limit}
           onChange={(e) => setProductValue(e.target.value)}
         >
           <option value="10">10</option>

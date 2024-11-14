@@ -12,6 +12,7 @@ const productSlice = createSlice({
   reducers: {
     setLimit: (state, action) => {
       state.query.limit = action.payload;
+      console.log("this is Slice page", state.query.limit);
     },
   },
   extraReducers: (builder) => {
