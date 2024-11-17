@@ -5,11 +5,20 @@ const authToken = localStorage.getItem("authToken");
 const getProducts = async ({
   limit = 10,
   sort = JSON.stringify({ createdAt: -1 }),
-  filters = JSON.stringify({}),
+  filters = {},
 }) => {
-  const query = `limit=${limit}&sort=${sort}&filters=${filters}`;
+  const query = `limit=${limit}&sort=${sort}&filters=${JSON.stringify(
+    filters
+  )}`;
   const response = await axios.get(
     `${config.baseApiUrl}/api/products?${query}`
+  );
+  return response;
+};
+
+const getCategories = async () => {
+  const response = await axios.get(
+    `${config.baseApiUrl}/api/products/categories`
   );
   return response;
 };
@@ -65,4 +74,11 @@ const deleteProduct = async (id) => {
   return response;
 };
 
-export { getProducts, getProductById, addProduct, editProduct, deleteProduct };
+export {
+  getProducts,
+  getProductById,
+  getCategories,
+  addProduct,
+  editProduct,
+  deleteProduct,
+};

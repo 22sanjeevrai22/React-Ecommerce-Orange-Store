@@ -103,7 +103,7 @@ const ProductForm = ({ product }) => {
           {errors.price?.message}
         </p>
       </div>
-      {/* <div className="relative text-gray-500">
+      <div className="relative text-gray-500">
         <input
           className="mx-1 py-2 h-12 px-10 my-3 rounded-2xl bg-white-200 border focus:outline-none focus:border-orange-500"
           type="url"
@@ -116,7 +116,7 @@ const ProductForm = ({ product }) => {
         <p className="absolute left-4 text-sm top-[85%] text-red-600">
           {errors.image?.message}
         </p>
-      </div> */}
+      </div>
 
       <button
         disabled={loading}

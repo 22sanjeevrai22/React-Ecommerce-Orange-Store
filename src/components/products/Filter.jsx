@@ -9,6 +9,8 @@ import {
 const Filter = () => {
   const dispatch = useDispatch();
   const { limit, sort, filters } = useSelector((state) => state.products.query);
+  const categories = useSelector((state) => state.products.categories);
+  console.log("cat3", categories);
 
   function filterByName(value) {
     dispatch(setFilters({ name: value }));
@@ -46,13 +48,22 @@ const Filter = () => {
       {/* Dropdown menu for Category */}
       <div className="text-sm text-gray-400 flex justify-center items-center pl-3 rounded-lg max-w-56">
         <label htmlFor="category">Category:</label>
-        <input
+        <select
           type="text"
           className="w-full rounded-md text-sm bg-gray-50 px-3 py-1 mx-3 my-1 border border-gray-300"
           name="category"
           id="category"
           onChange={(e) => filterByCategory(e.target.value)}
-        ></input>
+        >
+          <option value="" disabled>
+            Select Category
+          </option>
+          {categories.map((category, index) => (
+            <option key={index} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
       </div>
 
       {/* Dropdown menu for Sorting  */}

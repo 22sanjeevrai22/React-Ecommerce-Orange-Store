@@ -4,7 +4,10 @@ import { GoPlus } from "react-icons/go";
 import { Link } from "react-router-dom";
 import ProductCard from "../../components/products/Card";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductsThunk } from "../../redux/products/productActions";
+import {
+  getCategoriesThunk,
+  getProductsThunk,
+} from "../../redux/products/productActions";
 import Filter from "../../components/products/Filter";
 
 const ProductList = () => {
@@ -15,7 +18,8 @@ const ProductList = () => {
 
   useEffect(() => {
     dispatch(getProductsThunk(query));
-  }, [dispatch]);
+    dispatch(getCategoriesThunk());
+  }, [dispatch, query]);
 
   return (
     <>
@@ -37,7 +41,7 @@ const ProductList = () => {
               </Link>
             </div>
             <Filter />
-            <div className="grid gap-y-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center my-16">
+            <div className="min-h-[80vh] grid gap-y-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center my-16">
               {products.map((product) => (
                 <ProductCard id={product._id} key={product._id} {...product} />
               ))}
