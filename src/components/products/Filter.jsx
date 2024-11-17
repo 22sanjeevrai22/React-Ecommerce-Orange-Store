@@ -4,7 +4,7 @@ import { setLimit } from "../../redux/products/productSlice";
 
 const Filter = () => {
   const dispatch = useDispatch();
-  // const limit = useSelector((state) => state.products.query.limit);
+  // const limit = useSelector((state) => state.products.query.limit); uff
 
   function setProductValue(limit) {
     console.log("Limit", limit);
