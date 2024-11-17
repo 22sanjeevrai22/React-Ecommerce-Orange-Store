@@ -11,9 +11,11 @@ const Filter = () => {
   const { limit, sort, filters } = useSelector((state) => state.products.query);
 
   function filterByName(value) {
-    const jsonFilters = JSON.stringify({ name: value });
-    console.log("Filter JSON", jsonFilters);
-    dispatch(setFilters(jsonFilters));
+    dispatch(setFilters({ name: value }));
+  }
+
+  function filterByCategory(value) {
+    dispatch(setFilters({ category: value }));
   }
 
   function setSortQuery(sort) {
@@ -21,7 +23,6 @@ const Filter = () => {
   }
 
   function setProductValue(limit) {
-    console.log("Limit", limit);
     const parsedLimit = parseInt(limit);
     dispatch(setLimit(parsedLimit));
   }
@@ -32,7 +33,6 @@ const Filter = () => {
         <input
           type="text"
           placeholder="Search"
-          // value={filters.name}
           className="w-full outline-none bg-white pl-5 text-sm"
           onChange={(e) => filterByName(e.target.value)}
         />
@@ -46,16 +46,13 @@ const Filter = () => {
       {/* Dropdown menu for Category */}
       <div className="text-sm text-gray-400 flex justify-center items-center pl-3 rounded-lg max-w-56">
         <label htmlFor="category">Category:</label>
-        <select
+        <input
+          type="text"
           className="w-full rounded-md text-sm bg-gray-50 px-3 py-1 mx-3 my-1 border border-gray-300"
           name="category"
           id="category"
-        >
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-        </select>
+          onChange={(e) => filterByCategory(e.target.value)}
+        ></input>
       </div>
 
       {/* Dropdown menu for Sorting  */}

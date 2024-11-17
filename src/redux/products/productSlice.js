@@ -19,7 +19,7 @@ const productSlice = createSlice({
     },
 
     setFilters: (state, action) => {
-      state.query.filters = action.payload;
+      state.query.filters = { ...state.query.filters, ...action.payload };
     },
   },
 
