@@ -2,18 +2,26 @@ import axios from "axios";
 import config from "../config/config";
 const authToken = localStorage.getItem("authToken");
 
-const getProducts = async ({ limit = 10 }) => {
-  const query = `limit=${limit}`;
+const getProducts = async ({
+  limit = 10,
+  sort = JSON.stringify({ createdAt: -1 }),
+  filters = JSON.stringify({}),
+}) => {
+  const query = `limit=${limit}&sort=${sort}&filters=${filters}`;
   const response = await axios.get(
     `${config.baseApiUrl}/api/products?${query}`
   );
-  console.log("Api", response);
   return response;
 };
 
 const getProductById = async (id) => {
-  const response = await axios.get(`${config.baseApiUrl}/api/products/${id}`);
-  return response;
+  try {
+    const response = await axios.get(`${config.baseApiUrl}/api/products/${id}`);
+    return response;
+  } catch {
+    console.error("Error fetching product by ID:", error);
+    throw error; // or return a custom error object
+  }
 };
 
 const addProduct = async (data) => {

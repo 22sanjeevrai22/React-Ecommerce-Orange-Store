@@ -12,9 +12,17 @@ const productSlice = createSlice({
   reducers: {
     setLimit: (state, action) => {
       state.query.limit = action.payload;
-      console.log("this is Slice page", state.query.limit);
+    },
+
+    setSort: (state, action) => {
+      state.query.sort = action.payload;
+    },
+
+    setFilters: (state, action) => {
+      state.query.filters = action.payload;
     },
   },
+
   extraReducers: (builder) => {
     builder
       .addCase(getProductsThunk.pending, (state) => {
@@ -32,5 +40,5 @@ const productSlice = createSlice({
   },
 });
 
-export const { setLimit } = productSlice.actions;
+export const { setLimit, setSort, setFilters } = productSlice.actions;
 export default productSlice.reducer;

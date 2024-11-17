@@ -1,10 +1,24 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setLimit } from "../../redux/products/productSlice";
+import {
+  setFilters,
+  setLimit,
+  setSort,
+} from "../../redux/products/productSlice";
 
 const Filter = () => {
   const dispatch = useDispatch();
-  // const limit = useSelector((state) => state.products.query.limit); uff
+  const { limit, sort, filters } = useSelector((state) => state.products.query);
+
+  function filterByName(value) {
+    const jsonFilters = JSON.stringify({ name: value });
+    console.log("Filter JSON", jsonFilters);
+    dispatch(setFilters(jsonFilters));
+  }
+
+  function setSortQuery(sort) {
+    dispatch(setSort(sort));
+  }
 
   function setProductValue(limit) {
     console.log("Limit", limit);
@@ -16,9 +30,11 @@ const Filter = () => {
       {/* Search Field  */}
       <div className="bg-gray-50 flex px-0.5 rounded-3xl border border-blue-500 overflow-hidden max-w-56">
         <input
-          type="email"
+          type="text"
           placeholder="Search"
+          // value={filters.name}
           className="w-full outline-none bg-white pl-5 text-sm"
+          onChange={(e) => filterByName(e.target.value)}
         />
         <button
           type="button"
@@ -49,10 +65,16 @@ const Filter = () => {
           className="w-full rounded-md text-sm bg-gray-50 px-3 py-1 mx-3 my-1 border border-gray-300"
           name="sort"
           id="sort"
+          value={sort}
+          onChange={(e) => setSortQuery(e.target.value)}
         >
-          <option value="">Latest</option>
-          <option value="">Low to High</option>
-          <option value="">High to Low</option>
+          <option value={JSON.stringify({ createdAt: -1 })}>Latest</option>
+          <option value={JSON.stringify({ price: 1 })}>
+            Price: Low to High
+          </option>
+          <option value={JSON.stringify({ price: -1 })}>
+            Price: High to Low
+          </option>
         </select>
       </div>
       <div className="text-sm text-gray-400 flex justify-center items-center pl-3 rounded-lg max-w-56">
@@ -61,7 +83,7 @@ const Filter = () => {
           className="w-full rounded-md text-sm bg-gray-50 px-3 py-1 mx-3 my-1 border border-gray-300"
           name="limit"
           id="limit"
-          // value={limit}
+          value={limit}
           onChange={(e) => setProductValue(e.target.value)}
         >
           <option value="10">10</option>
