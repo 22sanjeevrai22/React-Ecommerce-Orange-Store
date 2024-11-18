@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Spinner from "../../components/Spinner";
 import { GoPlus } from "react-icons/go";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ProductCard from "../../components/products/Card";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -41,11 +41,21 @@ const ProductList = () => {
               </Link>
             </div>
             <Filter />
-            <div className="min-h-[80vh] grid gap-y-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center my-16">
-              {products.map((product) => (
-                <ProductCard id={product._id} key={product._id} {...product} />
-              ))}
-            </div>
+            {products.length == 0 ? (
+              <h2 className="min-h-svh text-center my-12 text-red-400">
+                Product Not Found
+              </h2>
+            ) : (
+              <div className="min-h-svh grid gap-y-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center my-8">
+                {products.map((product) => (
+                  <ProductCard
+                    id={product._id}
+                    key={product._id}
+                    {...product}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       )}
