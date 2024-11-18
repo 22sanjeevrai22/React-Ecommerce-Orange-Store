@@ -37,11 +37,8 @@ const productSlice = createSlice({
       .addCase(getProductsThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-      });
-  },
-
-  extraReducers: (builder) => {
-    builder
+      })
+      //Handling Categories
       .addCase(getCategoriesThunk.pending, (state) => {
         state.loading = true;
         state.error = null;

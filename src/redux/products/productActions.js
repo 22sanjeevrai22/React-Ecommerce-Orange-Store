@@ -6,6 +6,7 @@ const getProductsThunk = createAsyncThunk(
   async (query, { rejectWithValue }) => {
     try {
       const response = await getProducts(query || {});
+      console.log("product actions", response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data);

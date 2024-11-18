@@ -108,7 +108,7 @@ const ProductForm = ({ product }) => {
           className="mx-1 py-2 h-12 px-10 my-3 bg-gray-200 rounded-2xl bg-white-200 border focus:outline-none focus:border-orange-500"
           type="url"
           id="image"
-          placeholder="Image"
+          placeholder="Enter an image URL"
           {...register("image", {
             required: "Product image is required",
           })}
