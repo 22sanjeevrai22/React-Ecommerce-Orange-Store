@@ -18,6 +18,7 @@ body {
 }
 
 .my-container {
+  /* padding: 0.5rem 0 !important; */
   margin: 0 auto !important;
   max-width: 1200px !important;
 }
