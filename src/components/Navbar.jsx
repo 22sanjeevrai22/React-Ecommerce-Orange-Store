@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="fixed w-full  z-10">
+      <div className="fixed w-full z-10">
         <div className="bg-slate-50 shadow-lg">
           <nav className="my-container p-3">
             <div className="flex justify-between items-center">

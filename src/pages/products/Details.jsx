@@ -85,10 +85,10 @@ function ProductDetails() {
   }
   return (
     <>
-      <div className="my-container ">
+      <div className="my-container">
         <div
           onClick={handleNavigate}
-          className="inline-block pl-4 pr-5 py-1 items-center ml-5 mt-4 border-2 rounded-xl text-gray-400 cursor-pointer"
+          className="inline-block pl-4 pr-5 py-1 items-center ml-5 mt-4 border-2 rounded-xl text-gray-400 cursor-pointer mt-24"
         >
           <MdOutlineArrowBack className="inline-block mr-2" />
           Back
