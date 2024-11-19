@@ -27,8 +27,9 @@ const ProductList = () => {
         <Spinner className="mx-auto" />
       ) : (
         <div className="bg-gray-100">
-          <div className="my-container max-w-[1200px] mx-auto px-4 py-2 z-1">
-            <div className="my-5 flex items-center justify-between">
+          <div className="max-w-[1200px] mx-auto px-4 py-2 z-1">
+            <div className="my-5 flex items-center justify-between mt-28">
+              {/* spacing starts here  */}
               <div className="text-5xl uppercase">
                 <span className="text-orange-500 font-bold">Our</span>
                 <span className="text-green-500 font-bold"> Products</span>
