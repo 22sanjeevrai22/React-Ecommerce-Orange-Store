@@ -1,4 +1,3 @@
-import "./Index.css";
 import { PersistGate } from "redux-persist/integration/react";
 import Routes from "./Routes";
 import { persistor, store } from "./redux/store";

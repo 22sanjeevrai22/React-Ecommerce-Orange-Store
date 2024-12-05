@@ -59,7 +59,7 @@ const Filter = () => {
           className="w-full rounded-md text-sm bg-gray-50 px-3 py-1 mx-3 my-1 border border-gray-300"
           name="category"
           id="category"
-          value={query?.filters?.category}
+          // value={query?.filters?.category}
           onChange={(e) => filterByCategory(e.target.value)}
         >
           <option value="" disabled>
