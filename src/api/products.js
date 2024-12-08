@@ -30,7 +30,7 @@ const getProductById = async (id) => {
     return response;
   } catch {
     console.error("Error fetching product by ID:", error);
-    throw error; // or return a custom error object
+    throw error; //  orr return a custom error object
   }
 };
 
